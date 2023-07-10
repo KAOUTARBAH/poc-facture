@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First APP</title>
+</head>
+<body>
+ <nav class="p-3">
+  <ul class="nav nav-pills">
+   <li *ngFor="let action of actions">
+    <button 
+      (click)="setCurrentAction(action)"
+      routerLink="{{action.route}}"
+      [class]="action==currentAction
+      ? 'btn btn-success ms-1' :'btn btn-outline-success ms-1'"
+      
+      >
+      {{action.title}}
+      <i class="bi bi-{{action.icon}}"></i>
+    </button>
+   </li>
+  </ul>
+ </nav>
+
+ <router-outlet>
+
+ </router-outlet>
+</body>
+</html>
+
