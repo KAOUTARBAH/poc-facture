@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.bts.poc.facture.model.Facture;
 import com.bts.poc.facture.repository.IFactureRepository;
@@ -14,8 +15,13 @@ public class FactureService implements IFactureService {
 	@Autowired
 	IFactureRepository factureRepository;
 
+	@Autowired
+	sequenceGeneratorService sequenceGeneratorService;
+
+	
 	@Override
-	public Facture saveFacture(Facture facture) {
+	public Facture saveFacture( @RequestBody Facture facture) {
+		facture.setId(sequenceGeneratorService.generateSequence(facture.SEQUENCE_NAME));
 		return factureRepository.save(facture);
 	}
 

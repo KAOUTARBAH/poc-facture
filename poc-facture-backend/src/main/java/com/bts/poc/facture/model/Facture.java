@@ -2,13 +2,16 @@ package com.bts.poc.facture.model;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("facture")
 public class Facture {
 	
-	@Id
+	@Transient
+	public static final String SEQUENCE_NAME = "users_sequence";
 	
+	@Id
 	private Long id;
 	
 	private String libelle;
@@ -16,15 +19,17 @@ public class Facture {
 	public Float montant;
 	
 	private String client;
+	
+	
 
 	public Facture() {
 		super();
 	}
 
 	
-	public Facture(Long id, String libelle, Float montant, String client) {
+	public Facture(String libelle, Float montant, String client) {
 		super();
-		this.id = id;
+		
 		this.libelle = libelle;
 		this.montant = montant;
 		this.client = client;
@@ -62,6 +67,13 @@ public class Facture {
 	public void setClient(String client) {
 		this.client = client;
 	}
+	
+	
+
+	public static String getSequenceName() {
+		return SEQUENCE_NAME;
+	}
+
 
 	@Override
 	public String toString() {
