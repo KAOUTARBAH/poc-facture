@@ -1,8 +1,12 @@
 package com.bts.poc.facture.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -14,10 +18,13 @@ public class FactureService implements IFactureService {
 	
 	@Autowired
 	IFactureRepository factureRepository;
+	
 
 	@Autowired
 	sequenceGeneratorService sequenceGeneratorService;
 
+	@Autowired
+	private MongoOperations mongoOperations;
 	
 	@Override
 	public Facture saveFacture( @RequestBody Facture facture) {
@@ -50,6 +57,22 @@ public class FactureService implements IFactureService {
 	public void deleteAllFacture() {
 		factureRepository.deleteAll();
 
+	}
+
+	@Override
+	public List<Facture> findFactureByLibelle(String libelle){	
+		//return factureRepository.findFactureByLibelle(libelle);
+		List<Facture> factures = new ArrayList<>();
+		Query searchQuery = new Query();
+		//le mot le recherche cest le libelle 
+		//searchQuery.addCriteria(Criteria.where("libelle").is(libelle));
+		//le mot cle rechrche commance par tes*
+		//searchQuery.addCriteria(Criteria.where("libelle").regex("^TEST"));
+		searchQuery.addCriteria(Criteria.where("libelle").regex(libelle));
+		factures = mongoOperations.find(searchQuery, Facture.class);
+		
+		return factures;
+		
 	}
 
 }

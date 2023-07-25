@@ -2,7 +2,40 @@
     <div class="card">
         <div class="card-body">
             <h3>Nouveau Facture Componenet</h3>
+    
+        <div class="row">
+            <div class="col-md-6">
+                {{factureForm.value | json}}
+                <form [formGroup]="factureForm" (ngSubmit)="ajouterFacture()">
+                    <div class="mb-3">
+                        <label class="form-label">Libellé</label>
+                        <input class="form-control" formControlName="libelle">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Montant</label>
+                        <input class="form-control" formControlName="montant">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Client</label>
+                        <input class="form-control" formControlName="client">
+                    </div>
+
+                    <button type="submit" [disabled]="factureForm.invalid" class="btn btn-success">Ajouter Facture</button>
+
+
+                </form>
+
+
+            </div>
+
         </div>
+               
+            
+
     </div>
 </div>
+</div>
+   
 
