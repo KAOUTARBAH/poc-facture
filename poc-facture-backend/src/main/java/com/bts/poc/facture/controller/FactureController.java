@@ -3,6 +3,9 @@ package com.bts.poc.facture.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -74,6 +77,22 @@ public class FactureController implements IFactureController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	public List<Facture> findFactureByLibelle(@RequestParam ("mc")  String libelle) {		
 		return factureService.findFactureByLibelle(libelle);
+	}
+
+	@Override
+	@GetMapping("/factures")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public Page<Facture> findFactureList(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "3") Integer size) {
+		Pageable paging = PageRequest.of(page, size);
+		return factureService.findAllPages(paging);
+	}
+
+	@Override
+	@GetMapping("/facturePage")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public Iterable<Facture> findFactureByPage(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "3") Integer size) {
+		Pageable paging = PageRequest.of(page, size);
+		return factureService.findFactureByPage(paging);
 	}
 	
 	

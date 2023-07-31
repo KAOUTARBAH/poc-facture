@@ -1,9 +1,12 @@
 package com.bts.poc.facture.service;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -46,6 +49,9 @@ public class FactureService implements IFactureService {
 	public List<Facture> getAllFacture() {
 		return factureRepository.findAll();
 	}
+	
+	
+	
 
 	@Override
 	public void deleteFacture(Long id) {
@@ -74,5 +80,25 @@ public class FactureService implements IFactureService {
 		return factures;
 		
 	}
+
+	@Override
+	public Page<Facture> findAllPages(Pageable pageable) {	
+		return factureRepository.findAll(pageable);
+	}
+
+	@Override
+	public Page<Facture> findFactureByLibelle(String libelleabl, Pageable pageable) {
+		
+		return factureRepository.findAll(pageable);
+	}
+
+	
+	@Override
+	public Iterable<Facture> findFactureByPage(Pageable pageable) {
+		
+		return factureRepository.findAll(pageable);
+	}
+
+
 
 }

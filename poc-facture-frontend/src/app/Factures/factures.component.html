@@ -9,6 +9,7 @@
           </button>
         
       </div>
+
       <table class="table">
         <thead>
           <tr>
@@ -33,6 +34,14 @@
           </tr>
         </tbody>
       </table>
+
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><button class="page-link"  (click)="prevPage()">Previous</button></li>
+          <li class="page-item"><button class="page-link"  (click)="nextPage()">Next</button></li>
+        </ul>
+      </nav>
+      
     </div>
   </div>
 </div>

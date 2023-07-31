@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component , OnInit  } from '@angular/core';
 import { FactureService } from '../services/facture.service';
 import { Facture } from '../model/facture.model';
-
+import { CommonModule } from '@angular/common';
 
 /* export class facture {
   constructor(public id : number ,
@@ -20,8 +20,11 @@ import { Facture } from '../model/facture.model';
 })
 export class FacturesComponent implements OnInit{
 
-     public factures :Facture[] =[];
-    public keyword : string="";
+    public factures :Facture[] = [];
+    public keyword : string = "";
+    public currentPage :number = 0;
+    
+    
     
     // private factureURL ='http://localhost:8097/facture/allFacture'; 
 
@@ -34,7 +37,8 @@ export class FacturesComponent implements OnInit{
     
     console.log("Initialisation du controleur du compasant afficher factures");
     this.getFactures(); //faire appele de méthode ci dessous.
-   
+    //this.getFactureParPage();
+  
   }
 
   //méthode pour récupérer la liste des factures depuis API Rest
@@ -48,13 +52,52 @@ export class FacturesComponent implements OnInit{
          console.log(err);
        }
     })
-  
-   
     // this.client.get<any>(this.factureURL).subscribe
     //         (response => {console.log(response);
     //                      this.factures= response; });
   }
   
+
+  getFactureParPage(){
+    //this.factureService.getFacturesParPage(this.currentPage, 3)
+    this.factureService.getFacturesParPage(1, 3)
+    .subscribe({
+       next : data  => {
+         this.factures = data;
+          console.log(data);
+          console.log("*****************************");
+          console.log(this.factures);
+        
+       },
+       error : err => {
+         console.log(err);
+       }
+    })
+  }
+
+  
+
+  nextPage() {
+
+    if (this.currentPage < (this.factures?.length! / 3)) {
+      this.currentPage++;
+      this.getFactureParPage();
+
+    }
+
+  }
+
+  prevPage() {
+
+    if (this.currentPage > 0) {
+
+      this.currentPage--;
+
+      this.getFactureParPage();
+
+    }
+
+  }
 
   handleDeleteFacture(facture : Facture){
     if (confirm ("Etes vous sure ?"))
