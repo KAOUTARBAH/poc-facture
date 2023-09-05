@@ -15,6 +15,7 @@ public interface IFactureController {
 	Facture getFacture(Long id); 
 	List<Facture> getAllFacture(); 
 	List<Facture> findFactureByLibelle(String libelle);
+	Page<Facture>findFactureByLibelle(String libelle,Integer page, Integer size);
 	void deleteFacture(Long id); 
 	void deleteAllFacture(); 
 	Page<Facture> findFactureList(Integer page, Integer size);

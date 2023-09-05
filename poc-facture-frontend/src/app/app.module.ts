@@ -11,6 +11,7 @@ import { NouveauFactureComponent } from './nouveau-facture/nouveau-facture.compo
 import { HttpClientModule } from '@angular/common/http';
 import { FactureService } from './services/facture.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditFactureComponent } from './edit-facture/edit-facture.component';
 
 
 
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HomeComponent,
     NouveauFactureComponent,
-    FacturesComponent
+    FacturesComponent,
+    EditFactureComponent
   ],
   imports: [
     BrowserModule,

@@ -16,11 +16,12 @@ public interface IFactureService {
 	Facture getFacture(Long id); 
 	List<Facture> getAllFacture(); 
 	List<Facture> findFactureByLibelle(String libelle); 
-	Page<Facture> findFactureByLibelle(String libelleabl,Pageable pageable); 
+	Page<Facture> findFactureByLibelle(String libelle,Pageable pageable); 
 	void deleteFacture(Long id); 
 	void deleteAllFacture(); 
 	Page<Facture> findAllPages(Pageable pageable);
 	public Iterable<Facture> findFactureByPage(Pageable pageable);
+	
 	
 
 }

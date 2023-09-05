@@ -4,7 +4,7 @@
       <div class="card-body">
           {{keyword}}
           <input class="p-1" type="text" [(ngModel)]="keyword">
-          <button (click)="rechercheFactures()" class="btn btn-outline-success ms-1">
+          <button (click)="getFactureParPage()" class="btn btn-outline-success ms-1">
             <i class="bi bi-search"></i>
           </button>
         
@@ -31,6 +31,12 @@
                 <i class="bi bi-trash"> </i>
               </button>
             </td>
+
+            <td>
+              <button type="button" (click)="handleEditFacture(facture)" class="btn btn-outline-danger">
+                <i class="bi bi-pencil"> </i>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -41,6 +47,18 @@
           <li class="page-item"><button class="page-link"  (click)="nextPage()">Next</button></li>
         </ul>
       </nav>
+
+      <ul class="nav nav-pills">
+        <li *ngFor="let page of [].constructor(this.totalPage); let i = index">
+          <button (click) = "handleGoToPage(i)" 
+          [ngClass] ="this.currentPage==(i)?'btn btn-success m-1'
+          :'btn btn-outline-success m-1'">
+            {{i+1}}
+
+          </button>
+        </li>
+
+      </ul>
       
     </div>
   </div>

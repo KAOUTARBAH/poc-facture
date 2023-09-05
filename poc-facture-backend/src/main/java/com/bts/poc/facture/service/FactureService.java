@@ -6,10 +6,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.repository.support.PageableExecutionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -87,9 +92,19 @@ public class FactureService implements IFactureService {
 	}
 
 	@Override
-	public Page<Facture> findFactureByLibelle(String libelleabl, Pageable pageable) {
+	
+	public Page<Facture> findFactureByLibelle(String libelle, Pageable pageabl) {		
 		
-		return factureRepository.findAll(pageable);
+		List<Facture> factures = new ArrayList<>();
+		Query searchQuery = new Query();
+		
+		searchQuery.addCriteria(Criteria.where("libelle").regex(libelle))
+		.with(pageabl);
+		
+		factures = mongoOperations.find(searchQuery.with(pageabl), Facture.class);
+		Page<Facture> facturesWithPage= new PageImpl<Facture>(factures, pageabl, factures.size());
+		return facturesWithPage;
+		 
 	}
 
 	
