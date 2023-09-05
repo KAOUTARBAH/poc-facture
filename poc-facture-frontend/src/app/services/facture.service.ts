@@ -8,8 +8,6 @@ import { Facture } from '../model/facture.model';
   providedIn: 'root',
 })
 export class FactureService {
- 
-
   constructor(private http: HttpClient) {}
   public API_URL : string = "http://localhost:8098/api/v1/invoices";
 
