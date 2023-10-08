@@ -8,10 +8,16 @@ import { FacturesComponent } from './Factures/factures.component';
 import { NouveauFactureComponent } from './nouveau-facture/nouveau-facture.component';
 
 // Injecting http client module in the angular application.
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FactureService } from './services/facture.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditFactureComponent } from './edit-facture/edit-facture.component';
+import { LoginComponent } from './login/login.component';
+import { AdminTemplateComponent } from './admin-template/admin-template.component';
+import { AppHttpInterceptor } from './interceptors/app-http.interceptor';
+import { RegisterComponent } from './register/register.component';
+import { PrestationComponent } from './prestation/prestation.component';
+
 
 
 
@@ -21,7 +27,11 @@ import { EditFactureComponent } from './edit-facture/edit-facture.component';
     HomeComponent,
     NouveauFactureComponent,
     FacturesComponent,
-    EditFactureComponent
+    EditFactureComponent,
+    LoginComponent,
+    AdminTemplateComponent,
+    RegisterComponent,
+    PrestationComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +42,10 @@ import { EditFactureComponent } from './edit-facture/edit-facture.component';
    
   ],
   
-  providers: [FactureService],
+  providers: [FactureService,
+            {
+              provide : HTTP_INTERCEPTORS , useClass : AppHttpInterceptor, multi : true
+            }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,10 +17,10 @@ import com.bts.poc.facture.model.Facture;
 @Repository
 public interface IFactureRepository extends MongoRepository<Facture, Long> {
 
-	List<Facture> findFactureByLibelle(@Param("mc") String libelle );
+	List<Facture> findFactureByCustomerRef(@Param("mc") String customerRef );
 	
 	
-	Page<Facture> findFactureByLibelle(@Param("mc") String libelle ,Pageable pageable);
+	Page<Facture> findFactureByCustomerRef(@Param("mc") String customerRef ,Pageable pageable);
 	
-	Facture getFactureByLibelle(String libelle );
+	Facture getFactureByCustomerRef(String customerRef );
 }

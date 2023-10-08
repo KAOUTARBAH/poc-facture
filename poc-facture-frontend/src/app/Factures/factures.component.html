@@ -14,17 +14,25 @@
         <thead>
           <tr>
             <th>Id</th>
-            <th>Libelle</th>
-            <th>Montant</th>
-            <th>Client</th>
+            <th>customerRef</th>
+            <th>email</th>
+            <th>prestation</th>
+           
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let facture of factures">
+          
             <td>{{ facture.id }}</td>
-            <td>{{ facture.libelle }}</td>
-            <td>{{ facture.montant }}</td>
-            <td>{{ facture.client }}</td>
+            <td>{{ facture.customerRef }}</td>
+            <td>{{ facture.customerContact }}</td>
+        
+              <td>{{ facture.prestation.description }}</td>
+               <!-- <td>{{ prestation.quantity }}</td>
+              <td>{{ prestation.unitPrice }}</td>
+              <td>{{ prestation.VATRate }}</td>
+            </tr> -->
+
 
             <td>
               <button type="button" (click)="handleDeleteFacture(facture)" class="btn btn-outline-danger">
@@ -38,6 +46,16 @@
               </button>
             </td>
           </tr>
+
+         <!--
+        <tr *ngFor="let prestation of facture.prestation">
+          <td>{{ prestation.quantity }}</td>
+        </ng-container>
+        </tr>
+        -->
+          
+       
+            
         </tbody>
       </table>
 

@@ -1,6 +1,10 @@
+import { Prestation } from "./prestation.model";
+
 export interface Facture {
-  id: number;
-  libelle: string;
-  montant?: number;
-  client?: string;
+  id?: number;
+  customerRef?: string;
+  customerContact ?: string ; 
+	dueDate ?: Date ; 
+	emissionDate ?: Date ; 
+  prestation :Prestation ;
 }

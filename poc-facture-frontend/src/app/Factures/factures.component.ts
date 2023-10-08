@@ -125,11 +125,14 @@ export class FacturesComponent implements OnInit{
     
      console.log("current Page : " +this.currentPage);
      console.log("totalPage: " +(Math.floor(this.totalElements/ this.pageSize)));
-
-     if(this.totalElements % this.pageSize ==0){
-       this.currentPage
+      
+     
+    if(this.totalElements % this.pageSize ==0){
+      this.currentPage;
      }
      this.currentPage++;
+    
+     
     //  console.log("current Page NEXT: " +this.curren=tPage);
       this.getFactureParPage();
       //this.rechercheFacturesByPage();
@@ -226,7 +229,7 @@ export class FacturesComponent implements OnInit{
   }
 
   handleEditFacture(facture :Facture){
-    this.router.navigateByUrl(`/editFacture/${facture.id}`);
+    this.router.navigateByUrl(`/admin/editFacture/${facture.id}`);
   }
  
 }

@@ -15,8 +15,8 @@ public interface IFactureService {
 	Facture updateFacture(Facture facture); 
 	Facture getFacture(Long id); 
 	List<Facture> getAllFacture(); 
-	List<Facture> findFactureByLibelle(String libelle); 
-	Page<Facture> findFactureByLibelle(String libelle,Pageable pageable); 
+	List<Facture> findFactureByCustomerRef(String customerRef); 
+	Page<Facture> findFactureByCustomerRef(String customerRef,Pageable pageable); 
 	void deleteFacture(Long id); 
 	void deleteAllFacture(); 
 	Page<Facture> findAllPages(Pageable pageable);

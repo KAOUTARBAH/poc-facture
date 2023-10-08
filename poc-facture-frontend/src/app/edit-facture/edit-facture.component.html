@@ -6,19 +6,54 @@
         <div class="card-body" *ngIf="factureFormGroup">
             <form [formGroup]="factureFormGroup" (ngSubmit)="updateFacture()">
                 <div class="mb-3">
-                    <label class="form-label">Libellé</label>
-                    <input class="form-control" formControlName="libelle">
+                    <label class="form-label">Reference Client</label>
+                        <input class="form-control" formControlName="customerRef" type="text">
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Montant</label>
-                    <input class="form-control" formControlName="montant">
+                    <label class="form-label">Email Client</label>
+                        <input class="form-control" formControlName="customerContact" type="email">
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Client</label>
-                    <input class="form-control" formControlName="client">
+                    <label class="form-label">Date DUE</label>
+                    <input class="form-control" formControlName="dueDate"
+                    type="date" >
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Date emission</label>
+                    <input class="form-control" formControlName="emissionDate"
+                    type="date">
+                </div>
+                <div formGroupName="prestation">
+                    <h3> Prestation</h3>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <input type="text" class="form-control" name="description" formControlName="description">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+                        <input type="number" class="form-control" name="quantity" formControlName="quantity"  value= 4 >
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Prix unitaire</label>
+                        <input type="number" class="form-control" name="unitPrice" formControlName="unitPrice" value= 4 >
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tva Rate</label>
+                        <input type="number" class="form-control" name="vATRate" formControlName="vATRate" value = 2>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Date prestation</label>
+                        <input type="text" class="form-control" name="prestationDate" formControlName="prestationDate">
+                    </div> 
+            </div>
+
 
                 <button type="submit" [disabled]="factureFormGroup.invalid" class="btn btn-success">Ajouter Facture</button>
             </form>

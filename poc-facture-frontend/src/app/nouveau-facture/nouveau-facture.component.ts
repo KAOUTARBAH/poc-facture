@@ -18,9 +18,17 @@ export class NouveauFactureComponent implements OnInit {
 
   ngOnInit(): void {
     this.factureForm=this.formBuilder.group({
-      libelle : this.formBuilder.control('',[Validators.required]),
-      montant : this.formBuilder.control(0),
-      client  : this.formBuilder.control('',[Validators.required]),
+      customerRef : this.formBuilder.control('',[Validators.required]),
+      customerContact : this.formBuilder.control('',[Validators.required, Validators.email]),
+      dueDate  : this.formBuilder.control('',[Validators.required]),
+      emissionDate  : this.formBuilder.control('',[Validators.required]),
+      prestation :this.formBuilder.group({
+        description : this.formBuilder.control('',[Validators.required]),
+        quantity : this.formBuilder.control(0),
+        unitPrice : this.formBuilder.control(0),
+        vATRate : this.formBuilder.control(0),
+        prestationDate : this.formBuilder.control('',[Validators.required])
+      })
     });
  
   }
@@ -37,14 +45,9 @@ export class NouveauFactureComponent implements OnInit {
       }
     });
     
-    console.log('libelle', this.factureForm.value.libelle);
-    console.log('montant', this.factureForm.value.montant);
-    console.log('client', this.factureForm.value.client);
+    console.log('customerRef', this.factureForm.value.customerRef);
+    console.log('customerContact', this.factureForm.value.customerContact);
+    console.log('dueDate', this.factureForm.value.dueDate);
+    console.log('emissionDate', this.factureForm.value.emissionDate);
   }
-
-  
-
-
-  
-
 }

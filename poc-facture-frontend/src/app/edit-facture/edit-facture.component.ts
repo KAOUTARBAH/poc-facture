@@ -24,9 +24,17 @@ export class EditFactureComponent implements OnInit {
       next : (facture)=> {
         this.factureFormGroup = this.formBuilder.group({
           id : this.formBuilder.control(facture.id),
-          libelle : this.formBuilder.control(facture.libelle , [Validators.required]),
-          montant : this.formBuilder.control(facture.montant, [Validators.min(10)]),
-          client  : this.formBuilder.control(facture.client , [Validators.required])
+          customerRef : this.formBuilder.control(facture.customerRef , [Validators.required]),
+          customerContact : this.formBuilder.control(facture.customerContact, [Validators.min(16)]),
+          dueDate  : this.formBuilder.control(facture.dueDate),
+          emissionDate  : this.formBuilder.control(facture.emissionDate , [Validators.required]),
+          prestation :this.formBuilder.group({
+            description  : this.formBuilder.control(facture.prestation.description , [Validators.required]),
+            quantity  : this.formBuilder.control(facture.prestation.quantity , [Validators.required]),
+            unitPrice :this.formBuilder.control(facture.prestation.unitPrice , [Validators.required]),
+            vATRate : this.formBuilder.control(facture.prestation.VATRate,[Validators.required]),
+            prestationDate : this.formBuilder.control(facture.prestation.prestationDate)
+          })
         });
       },
      
