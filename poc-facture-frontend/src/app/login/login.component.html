@@ -1,27 +1,54 @@
-<div class="p-3">  
-    
-        <div class="card card-container">
+<div class="p-3">      
+        <div class="card card-container">      
+            <div class="logo-div"><img
+                id="logo-img"
+                src="assets/logo.png"
+                class="logo-img-card"
+                  />
+                </div>     
             
-            <img
+                <div class="img-div">
+                <img
               id="profile-img"
               src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
               class="profile-img-card"
             />
+        </div>  
         <div class="card-body">
+            
             <div class="card-header">Authentification</div> 
             <form [formGroup]="formLogin" (ngSubmit)="handleLogin()">
                 <div class="mb-3">
                     <label class="form-label">Username</label>
-                    <input type="text" class="form-control" formControlName="username">
-                   
-
+                    <input type="text" class="form-control" formControlName="username" >
+                  
+                    <small class="text-danger"
+                        *ngIf="(formLogin.controls['username'].touched|| submitted)">
+                        <div *ngIf= "formLogin.controls['username'].errors?.['required'] ">
+                            Username is required 
+                        </div>
+                        <div *ngIf= "formLogin.controls['username'].errors?.['minlength'] ">
+                            Username must be at least 3 characters 
+                        </div>    
+                    </small>  
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
                     <input type="password" class="form-control"  formControlName="password">
+
+                    <small class="text-danger"
+                        *ngIf="(formLogin.controls['password'].touched|| submitted)">
+                        <div *ngIf= "formLogin.controls['password'].errors?.['required'] ">
+                            password is required 
+                        </div>
+                        <div *ngIf= "formLogin.controls['password'].errors?.['minlength'] ">
+                            password must be at least 6 characters 
+                        </div>    
+                    </small>  
+                    
                 </div>
-                <button  class="bt btn-success">Login</button>
-                <button type="button" (click)="handleRegister()" class="bt btn-success" >Sign Up</button>
+                <button  class="btn btn-primary btn-block">Login</button>
+                <button type="button" (click)="handleRegister()" class="btn btn-primary btn-block" >Sign Up</button>
             </form>
         </div>
     </div>

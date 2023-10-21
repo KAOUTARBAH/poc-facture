@@ -48,10 +48,8 @@ export  class AuthService {
       this.isAuthenticated = false;
       this.username ="";
       this.accessToken ="";
-      
+ 
       return of(true);
-
-     
   }
 
   loadProfil(data:any){
@@ -61,9 +59,6 @@ export  class AuthService {
     this.username = decodedJwt.sub;
     this.roles = decodedJwt.scope;
   }
-
-
- 
 
 
     /*let options={

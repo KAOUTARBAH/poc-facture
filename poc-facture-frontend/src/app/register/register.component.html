@@ -1,10 +1,21 @@
 <div class="col-md-12">
     <div class="card card-container">
+      <div class="logo-div"><img
+        id="logo-img"
+        src="assets/logo.png"
+        class="logo-img-card"
+          />
+        </div>   
+      
+        <div class="img-div">
       <img
         id="profile-img"
         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
         class="profile-img-card"
       />
+    </div> 
+
+    <div class="card-header">Enregistrement</div> 
       <form
         *ngIf="!isSuccessful"
         name="form"
@@ -85,6 +96,8 @@
   
       <div class="alert alert-success" *ngIf="isSuccessful">
         Your registration is successful!
+        <button class="btn btn-outline-success" (click)="handleLogin()">Login</button>
       </div>
+     
     </div>
   </div>

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 //import lombok.AllArgsConstructor;
 //import lombok.Data;
@@ -17,9 +18,11 @@ public class Prestation {
 //	private long id;
 	private String description;
 	private Integer quantity;
+	@Field("unit_price")
 	private Float unitPrice;
 	private String unit;
 	private Float vATRate;
+	@Field("prestation_Date")
 	private Date prestationDate;
 
 	public Prestation() {

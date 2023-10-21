@@ -30,3 +30,43 @@ label {
     -webkit-border-radius: 50%;
     border-radius: 50%;
   }
+
+  .btn {
+    margin: 20px;
+    /* padding: 20px; */
+    text-align: center;
+    width: 100px;
+    flex-direction: row;
+  }
+
+  .logo-img-card {
+    width: 120px;
+    height: 60px;
+    margin: auto;
+
+    /* margin: 0 auto 10px; */
+    /* display: block; */
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    display: flex ; 
+    justify-content: center;
+  }
+  .logo-div{
+    display: flex;
+    justify-content: center;
+  }
+
+  .img-div{
+    padding: 20px 25px 30px;
+  }
+  .card-header{
+    font-family: 'Avenir', sans-serif; 
+    font-size: x-large;
+    font-weight: bold;
+    font-style: italic;
+    color: #2209c8;  
+    display: flex;
+    justify-content: center;
+  }

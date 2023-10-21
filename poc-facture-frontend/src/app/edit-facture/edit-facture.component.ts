@@ -32,7 +32,8 @@ export class EditFactureComponent implements OnInit {
             description  : this.formBuilder.control(facture.prestation.description , [Validators.required]),
             quantity  : this.formBuilder.control(facture.prestation.quantity , [Validators.required]),
             unitPrice :this.formBuilder.control(facture.prestation.unitPrice , [Validators.required]),
-            vATRate : this.formBuilder.control(facture.prestation.VATRate,[Validators.required]),
+            unit :this.formBuilder.control(facture.prestation.unit , [Validators.required]),
+            vATRate : this.formBuilder.control(facture.prestation.vATRate,[Validators.required]),
             prestationDate : this.formBuilder.control(facture.prestation.prestationDate)
           })
         });

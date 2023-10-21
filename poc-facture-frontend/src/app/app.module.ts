@@ -16,7 +16,9 @@ import { LoginComponent } from './login/login.component';
 import { AdminTemplateComponent } from './admin-template/admin-template.component';
 import { AppHttpInterceptor } from './interceptors/app-http.interceptor';
 import { RegisterComponent } from './register/register.component';
-import { PrestationComponent } from './prestation/prestation.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -30,15 +32,17 @@ import { PrestationComponent } from './prestation/prestation.component';
     EditFactureComponent,
     LoginComponent,
     AdminTemplateComponent,
-    RegisterComponent,
-    PrestationComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule
+
    
   ],
   

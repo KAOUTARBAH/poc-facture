@@ -1,7 +1,7 @@
 <div class="p-3">
     <div class="card">
         <div class="card-body">
-            <h3>Nouveau Facture Componenet</h3>
+            <h3>Nouvelle Facture</h3>
     
         <div class="row">
             <div class="col-md-6">
@@ -16,16 +16,17 @@
                         <label class="form-label">customer Contact</label>
                         <input class="form-control" formControlName="customerContact" type = "email">
                     </div>
-                    <!-- <span class="text-danger"
-                        *ngIf="factureForm.controls['customerContact'].touched
-                        && factureForm.controls['customerContact'].errors
-                        && factureForm.controls['customerContact'].errors!['customerContact']">
-                    Email is not valid
-                  </span> -->
-                    
                    
-                   
-
+                    <small class="text-danger"
+                    *ngIf="(factureForm.controls['customerContact'].touched|| submitted)">
+                    <div *ngIf= "factureForm.controls['customerContact'].errors?.['required'] ">
+                        email is required 
+                    </div>
+                    <div *ngIf= "factureForm.controls['customerContact'].errors?.['email'] ">
+                        Email must be a valid email address 
+                    </div>    
+                </small>  
+                
                     <div class="mb-3">
                         <label class="form-label">dueDate</label>
                         <input class="form-control" formControlName="dueDate" type="date">
@@ -54,6 +55,11 @@
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label">Unite</label>
+                            <input type="number" class="form-control" name="unit" formControlName="unit" value= 4 >
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Tva Rate</label>
                             <input type="number" class="form-control" name="vATRate" formControlName="vATRate" value = 2>
                         </div>
@@ -63,12 +69,7 @@
                             <input type="date" class="form-control" name="prestationDate" formControlName="prestationDate" value="2022-05-05">
                         </div> 
                     </div>
-
-                    
-
                     <button type="submit" [disabled]="factureForm.invalid" class="btn btn-success">Ajouter Facture</button>
-
-
                 </form>
 
 

@@ -16,7 +16,7 @@ export class AdminTemplateComponent implements OnInit {
   actions :Array<any>=[
     {title :"Home", "route" : "/admin/home", "icon" :"house"},
     {title :"Factures", "route" : "/admin/factures","icon"  :"list"},
-    {title :"Nouveau Facture", "route" : "/admin/nouveauFacture", "icon" :"plus-circle"}
+    {title :"Nouvelle Facture", "route" : "/admin/nouveauFacture", "icon" :"plus-circle"}
   ]
 
   currentAction :any;

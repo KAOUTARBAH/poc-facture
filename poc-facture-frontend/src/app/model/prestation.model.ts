@@ -4,7 +4,7 @@ export interface Prestation {
 	quantity ?: number;
 	unitPrice ?:number ;
 	unit : string;
- 	VATRate?:number ;
+ 	vATRate?:number ;
  	prestationDate ?: Date ; 
   
 }

@@ -10,14 +10,6 @@ import { Facture } from '../model/facture.model';
 export class FactureService {
   constructor(private http: HttpClient) {}
   public API_URL : string = "http://localhost:8098/api/v1/invoices";
-
-  getFactures(page: number = 1, size: number = 4): Observable<Array<Facture>> {
-    // return this.http.get(API_URLS.factures_URL);
-    return this.http.get<Array<Facture>>(
-      //`http://localhost:8098/facture/allFacture?page=${page}&size=${size}`
-      `${this.API_URL}/?page=${page}&size=${size}`
-    );
-  }
   
   getFacturesPage(page: number = 1, size: number = 4) {  
     return this.http.get(
@@ -25,7 +17,18 @@ export class FactureService {
     );
   }
 
+  getFacturesParPage(keyword: string ="", page: number = 1, size: number = 4) :Observable<any> {
+    // return this.http.get(API_URLS.factures_URL);
+    return this.http.get<Array<Facture>>(
+      `${this.API_URL}/KeywordByPage?mc=${keyword}&page=${page}&size=${size}`
+    );
+  }
 
+  getFactures(page: number = 1, size: number = 4): Observable<Array<Facture>> {    
+    return this.http.get<Array<Facture>>(
+      `${this.API_URL}/?page=${page}&size=${size}`
+    );
+  }
 
 
   /*
@@ -39,17 +42,7 @@ export class FactureService {
   
 
 
-  getFacturesParPage(keyword: string ="", page: number = 1, size: number = 4) :Observable<any> {
-    // return this.http.get(API_URLS.factures_URL);
-    return this.http.get<Array<Facture>>(
-      `${this.API_URL}/KeywordByPage?mc=${keyword}&page=${page}&size=${size}`
-    );
-  }
-  
-  
-
   deleteFacture(facture: Facture) {
-    //return this.http.delete<any>("http://localhost:8097/facture/${facture.id}");
     return this.http.delete(`${this.API_URL}/delete/${facture.id}`);
   }
 

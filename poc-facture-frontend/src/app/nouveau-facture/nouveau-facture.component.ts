@@ -11,6 +11,7 @@ import { Facture } from '../model/facture.model';
 export class NouveauFactureComponent implements OnInit {
   
   public factureForm!:FormGroup;
+  protected submitted = false;
 
   constructor(private formBuilder: FormBuilder , 
               private factureService :FactureService){
@@ -26,6 +27,7 @@ export class NouveauFactureComponent implements OnInit {
         description : this.formBuilder.control('',[Validators.required]),
         quantity : this.formBuilder.control(0),
         unitPrice : this.formBuilder.control(0),
+        unit : this.formBuilder.control('',[Validators.required]),
         vATRate : this.formBuilder.control(0),
         prestationDate : this.formBuilder.control('',[Validators.required])
       })
@@ -34,6 +36,7 @@ export class NouveauFactureComponent implements OnInit {
   }
 
   ajouterFacture(){
+    this.submitted = true;
     let facture : Facture = this.factureForm.value;
     this.factureService.ajouterFacture(facture)
     .subscribe({

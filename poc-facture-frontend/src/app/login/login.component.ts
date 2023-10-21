@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   formLogin! : FormGroup;
+  protected submitted = false;
   constructor(private formBuilder : FormBuilder,
               private  authService : AuthService,
               private router : Router ){
@@ -18,16 +19,21 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.formLogin = this.formBuilder.group({
       username : this.formBuilder.control("" , [
-        Validators.required ,Validators.minLength(4)
+        Validators.required ,Validators.minLength(3)
       ]),
       password : this.formBuilder.control("", [
         Validators.required ,Validators.minLength(6)
       ])
     })
   }
-
+  
+  get f()
+{
+    return this.formLogin.controls;
+}
   handleLogin(){
     //console.log(this.formLogin.value);
+    this.submitted = true;
     let username = this.formLogin.value.username;
     let pwd = this.formLogin.value.password;
     this.authService.login(username,pwd).subscribe({

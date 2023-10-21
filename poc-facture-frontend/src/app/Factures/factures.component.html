@@ -4,19 +4,26 @@
       <div class="card-body">
           {{keyword}}
           <input class="p-1" type="text" [(ngModel)]="keyword">
-          <button (click)="getFactureParPage()" class="btn btn-outline-success ms-1">
+          <button (click)="getFactureParPage()" class="btn btn-outline-success ms-1" >
             <i class="bi bi-search"></i>
           </button>
         
       </div>
 
-      <table class="table">
+      <table class="table" *ngIf="authService.isAuthenticated && factures.length !== 0">
         <thead>
           <tr>
             <th>Id</th>
-            <th>customerRef</th>
-            <th>email</th>
-            <th>prestation</th>
+            <th>Customer Ref</th>
+            <th>Email</th>
+            <th>Date due</th>
+            <th>Date Emission</th>
+            <th>Prestation</th>
+            <th>Quantité</th>
+            <th>Prix unitaire</th>
+            <th>Unité</th>
+            <th>Tva</th>
+            <th>Date pres.</th>
            
           </tr>
         </thead>
@@ -26,13 +33,15 @@
             <td>{{ facture.id }}</td>
             <td>{{ facture.customerRef }}</td>
             <td>{{ facture.customerContact }}</td>
+            <td>{{facture.dueDate | date: 'dd/MM/y'}} </td>
+            <td>{{facture.emissionDate | date: 'dd/MM/y'}} </td>
         
               <td>{{ facture.prestation.description }}</td>
-               <!-- <td>{{ prestation.quantity }}</td>
-              <td>{{ prestation.unitPrice }}</td>
-              <td>{{ prestation.VATRate }}</td>
-            </tr> -->
-
+              <td>{{ facture.prestation.quantity }}</td>
+              <td>{{ facture.prestation.unitPrice }}</td>
+              <td>{{ facture.prestation.unit }}</td>
+              <td>{{ facture.prestation.vATRate }}</td>
+              <td>{{facture.prestation.prestationDate | date: 'dd/MM/y'}} </td>
 
             <td>
               <button type="button" (click)="handleDeleteFacture(facture)" class="btn btn-outline-danger">
@@ -60,7 +69,7 @@
       </table>
 
       <nav aria-label="Page navigation example">
-        <ul class="pagination">
+        <ul class="pagination"   *ngIf="authService.isAuthenticated ">
           <li class="page-item"><button class="page-link"  (click)="prevPage()">Previous</button></li>
           <li class="page-item"><button class="page-link"  (click)="nextPage()">Next</button></li>
         </ul>
@@ -77,6 +86,39 @@
         </li>
 
       </ul>
+      <!-- <ul class="nav nav-pills">
+        <li *ngFor="let page of [].constructor(this.totalItems); let index=index">
+          <button (click)="handleGoToPage(index+1)"
+                  [ngClass]="this.currentPage===(index+1)?'btn btn-success m-1':'btn btn-outline-success m-1'"
+                  class="">
+            {{index+1}}
+          </button>
+        </li>
+      </ul> -->
+
+        <!-- <ul class="nav nav-pills">
+        <li *ngFor="let page of [].constructor(this.totalPages); let i = index">
+          <button (click) = "handleGoToPage(i)" 
+          [ngClass] ="this.currentPage==(i)?'btn btn-success m-1'
+          :'btn btn-outline-success m-1'">
+            {{i+1}}
+
+          </button>
+        </li>
+
+      </ul>   -->
+
+      <!-- <mat-paginator
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    [pageSizeOptions]="[10, 25, 50]"
+    [length]="totalItems"
+    (page)="onPageChange($event)"
+  ></mat-paginator> -->
+
+     
+
+      
       
     </div>
   </div>

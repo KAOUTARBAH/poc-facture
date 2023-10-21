@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document("facture")
 public class Facture {
@@ -20,11 +21,14 @@ public class Facture {
 
 	//private String libelle;
 
+	@Field("customer_ref")
 	private String customerRef;
 	// (email)
+	@Field("customer_contact")
 	private String customerContact;
-
+	@Field("due_date")
 	private Date dueDate;
+	@Field("emission_date")
 	private Date emissionDate;
 
 	//private List<Prestation> prestations = new ArrayList<Prestation>();
