@@ -46,6 +46,7 @@ export class FacturesComponent implements OnInit{
   ngOnInit():void{
     
    //console.log("Initialisation du controleur du compasant afficher factures");
+   
     //this.getFactures(); //faire appele de méthode ci dessous.
     this.getFactureParPage();
     //this.getFacturesPage();
