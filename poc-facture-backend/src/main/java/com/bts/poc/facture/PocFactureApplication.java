@@ -27,25 +27,25 @@ public class PocFactureApplication implements CommandLineRunner{
 		// TODO Auto-generated method stub
 		//List<Role> role = new ArrayList<Role>();
 		
-//		Role role1 = new Role();
-//		role1.setId("1");
-//		role1.setName(ERole.ROLE_USER);
-//		
-//		Role role2 = new Role();
-//		role2.setId("2");
-//		role2.setName(ERole.ROLE_ADMIN);
-//		
-//		Role role3 = new Role();
-//		role3.setId("3");
-//		role3.setName(ERole.ROLE_MODERATOR);
-//		
-//		roleRepository.save(role1);
-//		roleRepository.save(role2);
-//		roleRepository.save(role3);
-//		
-//		System.out.println(role1);
-//		System.out.println(role2);
-//		System.out.println(role3);
+		Role role1 = new Role();
+		role1.setId("1");
+		role1.setName(ERole.ROLE_USER);
+		
+		Role role2 = new Role();
+		role2.setId("2");
+		role2.setName(ERole.ROLE_ADMIN);
+		
+		Role role3 = new Role();
+		role3.setId("3");
+		role3.setName(ERole.ROLE_MODERATOR);
+		
+		roleRepository.save(role1);
+		roleRepository.save(role2);
+		roleRepository.save(role3);
+		
+		System.out.println(role1);
+		System.out.println(role2);
+		System.out.println(role3);
 		
 	}
 	

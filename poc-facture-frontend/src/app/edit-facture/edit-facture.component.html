@@ -17,13 +17,13 @@
 
                 <div class="mb-3">
                     <label class="form-label">Date DUE</label>
-                    <input class="form-control" formControlName="dueDate"
+                    <input class="form-control" formControlName="dueDate" value="{{facture.dueDate |  date: 'dd/MM/y}}"
                     type="date" >
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Date emission</label>
-                    <input class="form-control" formControlName="emissionDate"
+                    <input class="form-control" formControlName="emissionDate" 
                     type="date">
                 </div>
                 <div formGroupName="prestation">
@@ -34,28 +34,28 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Quantity</label>
-                        <input type="number" class="form-control" name="quantity" formControlName="quantity"  value= 4 >
+                        <input type="number" class="form-control" name="quantity" formControlName="quantity"   >
                     </div>
 
 
                     <div class="mb-3">
                         <label class="form-label">Prix unitaire</label>
-                        <input type="number" class="form-control" name="unitPrice" formControlName="unitPrice" value= 4 >
+                        <input type="number" class="form-control" name="unitPrice" formControlName="unitPrice" >
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Unité</label>
-                        <input type="number" class="form-control" name="unit" formControlName="unit" value= 4 >
+                        <input type="text" class="form-control" name="unit" formControlName="unit"  >
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Tva Rate</label>
-                        <input type="number" class="form-control" name="vATRate" formControlName="vATRate" value = 2>
+                        <input type="number" class="form-control" name="vATRate" formControlName="vATRate" >
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Date prestation</label>
-                        <input type="text" class="form-control" name="prestationDate" formControlName="prestationDate">
+                        <input type="date" class="form-control" name="prestationDate" formControlName="prestationDate">
                     </div> 
             </div>
 

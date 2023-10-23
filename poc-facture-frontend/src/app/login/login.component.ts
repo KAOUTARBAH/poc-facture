@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  errorMessage !: string;
   formLogin! : FormGroup;
+ 
   protected submitted = false;
   constructor(private formBuilder : FormBuilder,
               private  authService : AuthService,
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
       },
       error : err => {
         console.log(err);
+        this.errorMessage = 'error :  Username or password is incorrect'
       }
 
     })
