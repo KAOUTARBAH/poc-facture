@@ -27,7 +27,7 @@ export class FacturesComponent implements OnInit{
     public factures :Facture[] = [];
     public keyword : string = "";
     public currentPage :number = 0;
-    public pageSize :number = 3;
+    public pageSize :number = 5;
     public totalItems: number=0;
     public totalPage: number=0;
   
